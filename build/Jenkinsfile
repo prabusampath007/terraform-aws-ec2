@@ -6,12 +6,13 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                script{
-                    dockerImage = docker.build(imagename)
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
-                }
+                sh "echo 'hi'"
+                // script{
+                //     dockerImage = docker.build(imagename)
+                //     docker.withRegistry( '', registryCredential ) {
+                //         dockerImage.push()
+                //     }
+                // }
             }
         }
     }
