@@ -6,6 +6,8 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
+                sh "cd .."
+                sh "ls"
                 dir('../webapp') {
                     script{
                         dockerImage = docker.build(imagename)
