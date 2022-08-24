@@ -8,12 +8,10 @@ pipeline {
             steps {
                 sh "cd .."
                 sh "ls"
-                dir('../webapp') {
-                    script{
-                        dockerImage = docker.build(imagename)
-                        docker.withRegistry( '', registryCredential ) {
-                            dockerImage.push()
-                        }
+                script{
+                    dockerImage = docker.build(imagename, "-f ../webapp/Dockerfile .")
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
                     }
                 }
             }
