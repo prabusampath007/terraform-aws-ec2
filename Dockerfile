@@ -1,2 +1,2 @@
 FROM ubuntu
-CMD "sleep 10000"
+CMD ["sleep", "10000"]
