@@ -7,8 +7,8 @@ pipeline {
         stage('Build image') {
             steps {
                 script{
-                    sh "ls"
-                    dockerImage = docker.build(imagename, "-f ../webapp/Dockerfile .")
+                    sh "cd .."
+                    dockerImage = docker.build(imagename, "-f ./webapp/Dockerfile .")
                     docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
                     }
