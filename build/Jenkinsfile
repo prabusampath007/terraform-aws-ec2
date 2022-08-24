@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                dir('../webapp/Dockerfile') {
+                dir('../webapp') {
                     script{
                         dockerImage = docker.build(imagename)
                         docker.withRegistry( '', registryCredential ) {
