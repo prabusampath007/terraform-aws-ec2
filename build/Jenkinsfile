@@ -1,4 +1,4 @@
-imagename = "prabusampath007/my-ubuntu"
+imagename = "prabusampath007/mywebapp"
 registryCredential = 'docker-credentials'
 
 pipeline {
@@ -6,13 +6,14 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                sh "echo 'hi'"
-                // script{
-                //     dockerImage = docker.build(imagename)
-                //     docker.withRegistry( '', registryCredential ) {
-                //         dockerImage.push()
-                //     }
-                // }
+                dir('../webapp/Dockerfile') {
+                    script{
+                        dockerImage = docker.build(imagename)
+                        docker.withRegistry( '', registryCredential ) {
+                            dockerImage.push()
+                        }
+                    }
+                }
             }
         }
     }
